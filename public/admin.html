@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Gestión de Productos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="../src/js/productManager.js"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-6xl mx-auto bg-white rounded-lg shadow-md p-8">
+        <h1 class="text-2xl font-bold mb-6">Gestión de Productos</h1>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Formulario de producto -->
+            <div class="lg:col-span-1">
+                <h2 class="text-xl font-semibold mb-4" id="form-title">Añadir Nuevo Producto</h2>
+                
+                <form id="productForm" class="space-y-4">
+                    <input type="hidden" id="productId">
+                    
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Nombre:</label>
+                        <input type="text" id="name" name="name" required
+                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="price" class="block text-sm font-medium text-gray-700">Precio (USD):</label>
+                            <input type="number" id="price" name="price" step="0.01" required
+                                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label for="oldPrice" class="block text-sm font-medium text-gray-700">Precio Anterior:</label>
+                            <input type="number" id="oldPrice" name="oldPrice" step="0.01"
+                                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="stock" class="block text-sm font-medium text-gray-700">Stock:</label>
+                        <input type="number" id="stock" name="stock" required
+                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    
+                    <div>
+                        <label for="image" class="block text-sm font-medium text-gray-700">Imagen:</label>
+                        <input type="text" id="image" name="image" placeholder="assets/products/example.jpg"
+                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <input type="checkbox" id="onSale" name="onSale"
+                               class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                        <label for="onSale" class="ml-2 block text-sm text-gray-700">En oferta</label>
+                    </div>
+                    
+                    <div class="flex space-x-4 pt-4">
+                        <button type="button" onclick="handleSaveProduct()"
+                                class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                            Guardar
+                        </button>
+                        <button type="button" onclick="resetForm()"
+                                class="inline-flex justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                            Cancelar
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="mt-6">
+                    <button onclick="downloadProducts()"
+                            class="w-full inline-flex justify-center rounded-md border border-transparent bg-green-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                        Descargar JSON de Productos
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Lista de productos -->
+            <div class="lg:col-span-2">
+                <h2 class="text-xl font-semibold mb-4">Productos Existentes</h2>
+                <div id="admin-products-list" class="space-y-4">
+                    <!-- Los productos se cargarán aquí -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
