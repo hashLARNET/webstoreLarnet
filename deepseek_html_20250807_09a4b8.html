@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Proyecto Web</title>
+    <meta name="description" content="Descripción de tu proyecto web">
+    <meta name="author" content="Tu Nombre">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../src/css/reset.css">
+    <link rel="stylesheet" href="../src/css/variables.css">
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="../src/css/components/header.css">
+    <link rel="stylesheet" href="../src/css/components/footer.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <nav class="nav">
+                <div class="nav__brand">
+                    <h1>Mi Proyecto</h1>
+                </div>
+                <ul class="nav__menu">
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#about">Acerca</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main">
+            <section id="home" class="hero">
+                <div class="container">
+                    <h2>Bienvenido a Mi Proyecto</h2>
+                    <p>Una estructura profesional para desarrollo web</p>
+                    <button id="demo-btn" class="btn btn--primary">Demo Button</button>
+                </div>
+            </section>
+
+            <section id="about" class="section">
+                <div class="container">
+                    <h2>Acerca del Proyecto</h2>
+                    <p>Este es un template con estructura profesional para proyectos web.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2025 Mi Proyecto. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../src/js/utils/helpers.js"></script>
+    <script src="../src/js/components/navigation.js"></script>
+    <script src="../src/js/main.js"></script>
+</body>
+</html>

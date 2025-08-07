@@ -1,0 +1,14 @@
+/* Estilos del Footer */
+.footer {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+    margin-top: auto;
+}
+
+.footer p {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    opacity: 0.8;
+}
