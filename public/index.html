@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConstructoChile - Materiales de Construcción</title>
+    <meta name="description" content="Materiales de construcción con stock disponible en todo Chile. Cerámicas, cemento, pinturas y más.">
+    <meta name="author" content="ConstructoChile">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../src/css/reset.css">
+    <link rel="stylesheet" href="../src/css/variables.css">
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="../src/css/components/header.css">
+    <link rel="stylesheet" href="../src/css/components/footer.css">
+    <link rel="stylesheet" href="../src/css/components/products.css">
+    <link rel="stylesheet" href="../src/css/components/cart.css">
+    <link rel="stylesheet" href="../src/css/components/modal.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <nav class="nav">
+                <div class="nav__brand">
+                    <h1>🏗️ ConstructoChile</h1>
+                    <span class="nav__tagline">Materiales en todo Chile</span>
+                </div>
+                <div class="nav__search">
+                    <input type="text" id="search-input" placeholder="Buscar productos..." class="search-input">
+                    <button id="search-btn" class="search-btn">🔍</button>
+                </div>
+                <div class="nav__actions">
+                    <select id="region-selector" class="region-selector">
+                        <option value="">Seleccionar región</option>
+                        <option value="arica">Arica y Parinacota</option>
+                        <option value="tarapaca">Tarapacá</option>
+                        <option value="antofagasta">Antofagasta</option>
+                        <option value="atacama">Atacama</option>
+                        <option value="coquimbo">Coquimbo</option>
+                        <option value="valparaiso">Valparaíso</option>
+                        <option value="metropolitana">Metropolitana</option>
+                        <option value="ohiggins">O'Higgins</option>
+                        <option value="maule">Maule</option>
+                        <option value="nuble">Ñuble</option>
+                        <option value="biobio">Biobío</option>
+                        <option value="araucania">Araucanía</option>
+                        <option value="rios">Los Ríos</option>
+                        <option value="lagos">Los Lagos</option>
+                        <option value="aysen">Aysén</option>
+                        <option value="magallanes">Magallanes</option>
+                    </select>
+                    <button id="cart-btn" class="cart-btn">
+                        🛒 <span id="cart-count">0</span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <main class="main">
+            <section class="hero">
+                <div class="container">
+                    <h2>Materiales de Construcción en Todo Chile</h2>
+                    <p>Encuentra los mejores materiales con stock disponible y despacho a domicilio</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Productos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">16</span>
+                            <span class="stat-label">Regiones</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Bodegas</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="filters-section">
+                <div class="container">
+                    <div class="filters">
+                        <button class="filter-btn active" data-category="all">Todos</button>
+                        <button class="filter-btn" data-category="ceramicas">Cerámicas</button>
+                        <button class="filter-btn" data-category="cemento">Cemento</button>
+                        <button class="filter-btn" data-category="pinturas">Pinturas</button>
+                        <button class="filter-btn" data-category="herramientas">Herramientas</button>
+                        <button class="filter-btn" data-category="sanitarios">Sanitarios</button>
+                        <button class="filter-btn" data-category="electricidad">Electricidad</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="products-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Catálogo de Productos</h2>
+                        <div class="view-toggle">
+                            <button id="grid-view" class="view-btn active">⊞</button>
+                            <button id="list-view" class="view-btn">☰</button>
+                        </div>
+                    </div>
+                    <div id="products-grid" class="products-grid">
+                        <!-- Los productos se cargarán dinámicamente -->
+                    </div>
+                    <div id="loading" class="loading hidden">Cargando productos...</div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>ConstructoChile</h3>
+                        <p>Tu proveedor confiable de materiales de construcción en todo Chile.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contacto</h4>
+                        <p>📞 +56 2 2345 6789</p>
+                        <p>📧 ventas@constructochile.cl</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Horarios</h4>
+                        <p>Lun - Vie: 8:00 - 18:00</p>
+                        <p>Sáb: 9:00 - 14:00</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 ConstructoChile. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal del Carrito -->
+    <div id="cart-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Carrito de Compras</h3>
+                <button id="close-cart" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="cart-items"></div>
+                <div class="cart-summary">
+                    <div class="shipping-options">
+                        <h4>Opciones de Despacho</h4>
+                        <label class="shipping-option">
+                            <input type="radio" name="shipping" value="pickup" checked>
+                            <span>Retiro en bodega - GRATIS</span>
+                        </label>
+                        <label class="shipping-option">
+                            <input type="radio" name="shipping" value="delivery">
+                            <span>Despacho a domicilio - $15.000</span>
+                        </label>
+                    </div>
+                    <div class="cart-total">
+                        <div class="total-line">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">$0</span>
+                        </div>
+                        <div class="total-line">
+                            <span>Despacho:</span>
+                            <span id="shipping-cost">$0</span>
+                        </div>
+                        <div class="total-line total-final">
+                            <span>Total:</span>
+                            <span id="total">$0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="clear-cart" class="btn btn--secondary">Vaciar Carrito</button>
+                <button id="checkout" class="btn btn--primary">Proceder al Pago</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Producto -->
+    <div id="product-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="product-modal-title">Detalles del Producto</h3>
+                <button id="close-product" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="product-modal-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../src/js/data/products.js"></script>
+    <script src="../src/js/data/warehouses.js"></script>
+    <script src="../src/js/utils/helpers.js"></script>
+    <script src="../src/js/components/cart.js"></script>
+    <script src="../src/js/components/products.js"></script>
+    <script src="../src/js/components/modal.js"></script>
+    <script src="../src/js/main.js"></script>
+</body>
+</html>
