@@ -1,42 +1,165 @@
-/* Reset CSS - Normalización básica */
-* {
-    margin: 0;
-    padding: 0;
+/* Reset CSS Moderno - Basado en mejores prácticas 2025 */
+
+/* 1. Usar un modelo de caja más intuitivo */
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
+/* 2. Eliminar márgenes por defecto */
+* {
+    margin: 0;
+}
+
+/* 3. Configurar porcentajes más intuitivos para media */
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* 4. Eliminar estilos por defecto de inputs */
+input, button, textarea, select {
+    font: inherit;
+}
+
+/* 5. Evitar overflow de texto */
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+/* 6. Configuración mejorada del root */
 html {
     font-size: 16px;
     scroll-behavior: smooth;
+    /* Mejora el rendering de fuentes */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Mejora el performance del scroll */
+    scroll-padding-top: 2rem;
 }
 
+/* 7. Configuración del body */
 body {
     line-height: 1.6;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-main);
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    /* Prevenir overflow horizontal */
+    overflow-x: hidden;
+    /* Mejorar el rendering */
+    text-rendering: optimizeLegibility;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+/* 8. Crear un root stacking context */
+#root, #__next, #app {
+    isolation: isolate;
 }
 
+/* 9. Estilos mejorados para elementos comunes */
 a {
+    color: var(--color-primary);
     text-decoration: none;
-    color: inherit;
+    transition: var(--transition-fast);
 }
 
+a:hover, a:focus {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+/* 10. Mejorar usabilidad de listas */
 ul, ol {
     list-style: none;
+    padding: 0;
 }
 
+/* 11. Botones más accesibles */
 button {
     border: none;
     background: none;
     cursor: pointer;
     font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+    transition: var(--transition-fast);
 }
 
+button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+/* 12. Inputs más consistentes */
 input, textarea, select {
-    font-family: inherit;
-    font-size: inherit;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-default);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-base);
+    line-height: 1.5;
+    transition: var(--transition-fast);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-lighter);
+}
+
+/* 13. Mejorar tablas */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* 14. Remover animaciones para usuarios que las prefieren deshabilitadas */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* 15. Mejorar contraste en modo de alto contraste */
+@media (prefers-contrast: high) {
+    :root {
+        --border-color: var(--color-neutral-900);
+        --text-secondary: var(--color-neutral-700);
+    }
+}
+
+/* 16. Utilidades para screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* 17. Prevenir zoom en inputs en iOS */
+@media screen and (max-width: 767px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="search"],
+    input[type="password"],
+    textarea,
+    select {
+        font-size: 16px;
+    }
 }
